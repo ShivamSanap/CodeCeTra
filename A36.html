@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Cute+Font&display=swap");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  background-color: #e2eff1;
+  font-family: "Cute Font", Roboto, sans-serif;
+  overflow: scroll;
+  color: #e2eff1;
+}
+
+* :before,
+* :after {
+  position: absolute;
+  content: "";
+}
+
+nav{
+  position: relative;
+  margin: auto;
+  width: 500px;
+  height: 100%;
+  transform: scale(0.8);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  font-size: 30px;
+  text-align: center;
+}
+
+li {
+  list-style: none;
+}
+
+.toggle {
+  opacity: 0;
+}
+
+.toggle:checked + .label .hum {
+  transition: 0.8s;
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.toggle:checked + .label .hum:before {
+  transition: 0.8s;
+  transform: rotate(-90deg) translate(10px, 0px);
+}
+
+.toggle:checked + .label .hum:after {
+  opacity: 0;
+  transition: 0.8s;
+  transform: rotate(-90deg) translate(20px, 0px);
+}
+
+.toggle:checked + .label .list_home {
+  opacity: 1;
+  height: 200px;
+  transition: 0.8s;
+}
+
+.toggle:checked + .label .list_about {
+  opacity: 1;
+  height: 200px;
+  transition: 0.8s;
+}
+
+.toggle:checked + .label .list_clients {
+  opacity: 1;
+  transition: 0.8s;
+  transform: translate(200px, -200px) rotate(45deg);
+}
+
+.toggle:checked + .label .list_clients:after {
+  height: 36px;
+  transition: 1.1s;
+}
+
+.toggle:checked + .label .list_clients li {
+  opacity: 0;
+}
+
+.toggle:checked + .label .list_strauss {
+  opacity: 1;
+  transition: 0.8s;
+  /* transform: translate(90px, -260px) rotate(-135deg); */
+  transform: translate(139px, -191px) rotate(-135deg);
+}
+
+.toggle:checked + .label .list_strauss:after {
+  height: 36px;
+  transition: 1.1s;
+}
+
+.toggle:checked + .label .list_clientsItems:nth-of-type(1){
+  height: 0;
+}
+
+.toggle:checked + .label .list_contact {
+  opacity: 1;
+  height: 200px;
+  transition: 0.8s;
+}
+
+.label {
+  position: absolute;
+  top: calc(50% - (100px / 2));
+  left: calc(50% - (100px / 2));
+  width: 100px;
+  height: 100px;
+  background-color: #e23e57;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.list {
+  position: absolute;
+  top: -200px;
+  left: calc(50% - 250px);
+  width: 500px;
+  height: 500px;
+  transform-origin: center;
+}
+
+.list_home {
+  height: 10px;
+  transform: translate(200px, -300px);
+  overflow: hidden;
+  transition: 0.8s;
+  transform: translate(200px, -300px);
+}
+
+.list_home a {
+  background: #65799b;
+}
+
+.list_about {
+  height: 10px;
+  overflow: hidden;
+  transform: translate(158px, -275px) rotate(-45deg);
+  transform: translate(158px, -275px) rotate(-45deg);
+  transition: 0.8s;
+}
+
+.list_about a {
+  background: #65799b;
+  transform: rotate(45deg);
+}
+
+.list_clients {
+   height: 210px;
+   /* width: 300px;
+   height: 300px; */
+  transition: 0.8s;
+  transform: translate(100px, -110px) rotate(45deg);
+}
+
+.list_clients a {
+  background: #65799b;
+}
+
+.list_clients a span {
+  transform: rotate(-45deg);
+}
+
+.list_clients:after {
+  top: 250px;
+  width: 1px;
+  height: 0;
+  background: #555273;
+  left: 45px;
+  transition: 0.3s;
+}
+
+.list_clients .list_clientsItems {
+  transition: 0.8s;
+}
+
+ .list_clients .list_clientsItems li {
+  transition: 0.8s;
+  opacity: 0;
+  width: 100px;
+  height: 0;
+  overflow: hidden;
+}
+
+.list_clients .list_clientsItems li:after {
+  z-index: -1;
+}
+
+.list_clients .list_clientsItems li a {
+  margin: 0 0 auto 0;
+  background: #555273;
+}
+
+.list_clients .list_clientsItems li:after {
+  top: 100px;
+  left: 50px;
+}
+
+.list_clients .list_clientsItems li:nth-of-type(1) {
+  transform: scale(0.8) translate(-15px, -255px) rotate(-20deg);
+}
+
+.list_clients .list_clientsItems li:nth-of-type(1) a {
+  transform: rotate(-25deg);
+}
+
+.list_clients .list_clientsItems li:nth-of-type(2) {
+  font-size: 22px;
+  transform: scale(0.8) translate(20px, -250px) rotate(30deg);
+}
+
+.list_clients .list_clientsItems li:nth-of-type(2) a {
+  transform: rotate(-75deg);
+}
+
+.list_clients .list_clientsItems li:nth-of-type(3) {
+  transform: scale(0.8) translate(33px, -167px) rotate(120deg);
+}
+
+.list_clients .list_clientsItems li:nth-of-type(3):after {
+  top: 100px;
+  transition: 0s;
+}
+
+.list_clients .list_clientsItems li:nth-of-type(3) a {
+  transform: rotate(195deg);
+}
+
+.list_clients:hover {
+  opacity: 1;
+}
+
+.list_clients:hover ul,
+.list_clients:hover li {
+  display: flex;
+  align-items: center;
+}
+.list_clients:hover .list_clientsItems {
+  transition: 0.8s;
+}
+.list_clients:hover .list_clientsItems li:nth-of-type(1) {
+  height: 200px;
+  opacity: 1;
+}
+.list_clients:hover .list_clientsItems li:nth-of-type(2) {
+  height: 225px;
+  opacity: 1;
+}
+.list_clients:hover .list_clientsItems li:nth-of-type(3) {
+  height: 210px;
+  opacity: 1;
+}
+.list_clients a {
+  margin: 150px 0 0 0;
+}
+.list_strauss {
+  /* width: 200px; */
+  /* height: 360px; */
+  transition: 0.8s;
+  transform: translate(185px, -365px) rotate(-135deg);
+}
+.list_strauss a {
+  background: #657996;
+}
+.list_strauss a span {
+  transform: rotate(135deg);
+}
+.list_strauss:after {
+  top: 250px;
+  width: 1px;
+  height: 0;
+  background: #555273;
+  left: 45px;
+  transition: 0.3s;
+  /* transform: rotate(27deg); */
+}
+.list_strauss .list_straussItem{
+  transition: 0.8s;
+}
+
+.list_strauss .list_straussItem li{
+  opacity: 0;
+  width: 100px;
+  height: 0;
+  overflow: hidden;
+  transition: 0.8s;
+}
+.list_strauss .list_straussItem li:after{
+  z-index: -1;
+}
+.list_strauss .list_straussItem li a {
+  margin: 0 0 auto 0;
+  background: #555273;
+}
+.list_strauss .list_straussItem li:after {
+  top: 100px;
+  left: 50px;
+}
+
+.list_strauss .list_straussItem li:nth-of-type(1) {
+  transform: scale(0.8) translate(-55px, -80px) rotate(-50deg);
+}
+.list_strauss .list_straussItem li:nth-of-type(1) a {
+  transform: rotate(185deg);
+}
+.list_strauss .list_straussItem li:nth-of-type(2) {
+  font-size: 22px;
+  transform: scale(0.8) translate(20px, -105px) rotate(30deg);
+}
+.list_strauss .list_straussItem li:nth-of-type(2) a {
+  transform: rotate(105deg);
+}
+.list_strauss .list_straussItem li:nth-of-type(3) {
+  font-size: 22px;
+  transform: scale(0.8) translate(40px, -70px) rotate(120deg);
+}
+.list_strauss .list_straussItem li:nth-of-type(3):after {
+  top: 100px;
+}
+.list_strauss .list_straussItem li:nth-of-type(3) a {
+  transform: rotate(15deg);
+}
+
+.list_strauss:hover {
+  opacity: 1;
+}
+.list_strauss:hover ul,
+.list_strauss:hover li {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  align-items: center;
+}
+.list_strauss:hover .list_straussItem {
+  transition: 0.8s;
+}
+.list_strauss:hover .list_straussItem li:nth-of-type(1) {
+  height: 200px;
+  opacity: 1;
+}
+.list_strauss:hover .list_straussItem li:nth-of-type(2) {
+  height: 230px;
+  opacity: 1;
+}
+.list_strauss:hover .list_straussItem li:nth-of-type(3) {
+  height: 225px;
+  opacity: 1;
+}
+.list_strauss a {
+  margin: 150px 0 0 0;
+}
+.list_contact {
+  height: 10px;
+  overflow: hidden;
+  transition: 0.8s;
+  transform: translate(230px, -210px) rotate(135deg);
+}
+.list_contact a {
+  background: #65799b;
+  transform: rotate(-135deg);
+}
+.list_home,
+.list_about,
+.list_clients,
+.list_clients .list_clientsItems li,
+.list_strauss,
+.list_strauss .list_straussItem li,
+.list_contact {
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  z-index: -1;
+  transform-origin: bottom center;
+  box-sizing: border-box;
+}
+
+.list_home:after,
+.list_about:after,
+.list_clients:after,
+.list_clients .list_clientsItems li:after,
+.list_strauss:after,
+.list_strauss .list_straussItem li:after,
+.list_contact:after {
+  top: 100px;
+  width: 1px;
+  height: 100%;
+  background: #555273;
+  z-index: -1;
+}
+.list_home a,
+.list_about a,
+.list_clients a,
+.list_clients .list_clientsItems li a,
+.list_strauss a,
+.list_strauss .list_straussItem li a,
+.list_contact a {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  border-radius: 50%;
+  line-height: 1;
+  color: #e2eff1;
+  box-sizing: border-box;
+}
+
+.list_home a:visited,
+.list_about a:visited,
+.list_clients a:visited,
+.list_clients .list_clientsItems li a:visited,
+.list_strauss a:visited,
+.list_strauss .list_straussItem li a:visited,
+.list_contact a:visited,
+.list_home a:active,
+.list_about a:active,
+.list_clients a:active,
+.list_clients .list_clientsItems li a:active,
+.list_strauss a:active,
+.list_strauss .list_straussItem li a:active,
+.list_contact a:active {
+  color: #2b2e2e;
+}
+
+.list_home a:hover,
+.list_about a:hover,
+.list_clients a:hover,
+.list_clients .list_clientsItems li a:hover,
+.list_strauss a:hover,
+.list_strauss .list_straussItem li a:hover,
+.list_contact a:hover {
+  color: #fff;
+}
+
+.toggle:checked + .label .list_home,
+.toggle:checked + .label .list_about,
+.toggle:checked + .label .list_clients,
+.toggle:checked + .label .list_strauss,
+.toggle:checked + .label .list_contact {
+  opacity: 1;
+  z-index: 0;
+}
+
+P{
+  position: absolute;
+  bottom: 10px;
+  left: calc(50% - 22px);
+  margin: 0;
+  color: #fff;
+  font-size: 30px;
+}
+.hum {
+  position: absolute;
+  top: 28px;
+  left: 30px;
+  width: 40px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: 0.8s;
+}
+
+.hum:before,
+.hum:after {
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: 0.8s;
+}
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <input class="toggle" id="nav" type="checkbox" />
+        <label class="label" for="nav">
+            <p>Menu</p><span class="hum"></span>
+            <ul class="list">
+                <li class="list_home"><a href="#0">Home</a></li>
+                <li class="list_about"><a href="#0">About</a></li>
+                <li class="list_clients"><a href="#0"><span>Clients</span></a>
+                    <ul class="list_clientsItems">
+                        <li><a href="#0">Burger King</a></li>
+                        <li><a href="#0">Southwest Airlines</a></IL>
+                        <li><a href="#0">Levi Strauss</a></li>
+                    </ul>
+                </li>
+                <li class="list_strauss"><a href="#0"><span>Services</span></a>
+                    <ul class="list_straussItem">
+                        <li><a href="#0">Print Design</a></li>
+                        <li><a href="#0">Web Design</a></li>
+                        <li><a href="#0">Mobile App Development</a></11>
+                    </ul>
+                </li>
+                <li class="list_contact"><a href="#0">Contact</a></li>
+            </ul>
+        </label>
+    </nav>
+
+</body>
+
+</html>
