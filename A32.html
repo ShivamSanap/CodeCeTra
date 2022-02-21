@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 100%;
+            height: 100vh;
+            background: #e96443;
+            background: -webkit-linear-gradient(
+                to right,
+                #904e95,
+                #e96443
+            );
+        }
+        .center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            width: 180px;
+            height: 60px;
+            background: white;
+            border-radius: 50px;
+        }
+        .box p{
+          font-size: 1.8rem;
+          cursor: pointer;
+          filter: grayscale(1);
+          transition: all .4s;
+        }
+        .box p:hover{
+            filter: grayscale(0);
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="main center">
+        <div class="box center">
+            <p id="emoji"></p>
+        </div>
+    </div>
+    <script>
+        let emoji = document.getElementById("emoji");
+        let emojiArr = [
+            "😎",
+            "😍",
+            "😜",
+            "😢",
+            "😉",
+            "😊",
+            "😂",
+            "😘",
+            "😁",
+            "😒",
+            "🥲",
+            "🤐",
+            "😷"
+
+        ];
+        let incr = 0;
+        emoji.innerHTML = emojiArr[incr];
+        incr++;
+        emoji.addEventListener("mouseover", ()=>{
+            if(incr == emojiArr.length){
+                incr=0;
+            }
+            else{
+                emoji.innerHTML = emojiArr[incr];
+                incr++;
+            }
+        });
+    </script>
+</body>
+</html>
