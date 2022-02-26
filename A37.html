@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppin&display=swap");
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            width: 250px;
+            height: 200px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.082);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container p{
+            margin: 5px 20px;
+            text-align: center;
+            font-size:10px;
+        }
+        .btn{
+            background: #FF416C;
+            box-shadow:  0 0 30px rgba(0, 0, 0, 0.253);
+            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            border: none;
+            color: white;
+            padding: 4px 20px;
+            margin-top: 5px;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        .btn::before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            border-radius: 20px;
+            filter: blur(0px);
+            top:0;
+            left: 0;
+            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            transition: filter .4s;
+        }
+        .btn:hover::before{
+            filter: blur(10px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <i class="fas fa-cookie fa-3x"></i>
+        <h3>We Uses Cookies</h3>
+        <p>The website uses Cookies to enhance your browsing experience</p>
+        <button class="btn">ACCEPT</button>
+    </div>
+</body>
+</html>
