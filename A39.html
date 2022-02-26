@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: Digital-7 Mono;
+        src: url(digital-7.ttf);
+      }
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body{
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        /* font-family: Digital-7 Mono; */
+        background-color: #000;
+        /* color: white; */
+      }
+      .text_color{
+        background: linear-gradient(to bottom, #2980b9, #2c3e50);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        
+      }
+      .time_wrapper{
+       
+        position: relative;
+      }
+      #time{
+        text-shadow: 0 0 55px #2980b9;
+        font-size: 4.5rem;
+      }
+      #med{
+        position: absolute;
+        top: 12px;
+        right: 71px;
+
+      }
+      #sec{
+        position: relative;
+        right: -6px;
+
+      }
+     
+      .day_wrapper span {
+        font-size: 0.9rem;
+        opacity: 0.4;
+        font-weight: 600;
+      }
+      .week{
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="time_wrapper">
+        <span class="text_color" id="time"></span
+        ><span class="text_color" id="sec"></span
+        ><span class="text_color" id="med"></span>
+      </div>
+      <div class="day_wrapper">
+          <span class="text_color week">SUN</span>
+          <span class="text_color week">MON</span>
+          <span class="text_color week">TUE</span>
+          <span class="text_color week">WED</span>
+          <span class="text_color week">THU</span>
+          <span class="text_color week">FRI</span>
+          <span class="text_color week">SAT</span>
+      </div>
+      <span class="text_color" id="full_date"></span>
+    </div>
+  </body>
+  <script>
+    function currentTime()
+    {
+      var date = new Date();
+      var day = date.getDay();
+      var hour = date.getHours();
+      var min = date.getMinutes();
+      var sec = date.getSeconds();
+      var month= date.getMonth();
+      var curr_date = date.getDate();
+      var year = date.getFullYear();
+      var month_name = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      var showDay = document.querySelectorAll(".day_wrapper span")
+      var midday = "AM";
+      midday = (hour >= 12) ? "PM" : "AM";
+      hour = (hour == 0) ? 12 : ((hour  > 12) ? (hour - 12) : hour);
+      hour = updateTime(hour);
+      min = updateTime(min);
+      sec = updateTime(sec);
+      curr_date = updateTime(curr_date)
+      document.querySelector("#time").innerHTML = `${hour}:${min}`
+      document.querySelector("#sec").innerHTML = `${sec}`
+      document.querySelector("#med").innerHTML = `${midday}`;
+      document.querySelector("#full_date").innerHTML = `${month_name[month]} ${curr_date} ${year}`
+      showDay[day].style.opacity = '1';
+
+    }
+    function updateTime(k)
+    {
+      if (k < 10)
+      {
+        return "0" + k;
+      }
+      else {
+        return k;
+      }
+    }
+    setInterval(currentTime, 1000);
+  </script>
+</html>
