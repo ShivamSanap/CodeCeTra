@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/23d51736fe.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: rgb(235, 73, 73);
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: sans-serif;
+      }
+      form {
+        position: relative;
+      }
+      input {
+        min-width: 28rem;
+        height: 4rem;
+        padding: 0 25px;
+        outline: 0;
+        border: 1px solid rgb(208, 208, 208);
+        border-radius: 50px;
+        font-size: 24px;
+        letter-spacing: 1px;
+      }
+      .far {
+        position: absolute;
+        font-size: 30px;
+        color: rgb(39, 39, 39);
+        top: 1.1rem;
+        right: 1.2rem;
+        cursor: pointer;
+      }
+      .message {
+        position: relative;
+        width: 25rem;
+        height: 14rem;
+        background: white;
+        top: 1.5rem;
+        border-radius: 10px;
+        opacity: 0;
+        transition: .3s;
+      }
+      .password-contain {
+        position: relative;
+        font-size: 22px;
+        padding: 0 60px;
+        color: rgb(46, 45, 45);
+        font-weight: 500;
+      }
+      .valid {
+        color: green;
+      }
+      .invalid {
+        color: red;
+      }
+      .fas {
+        position: relative;
+        top: 1.6rem;
+        font-size: 22px;
+        padding: 0 30px;
+        color: red;
+      }
+      .fa-check {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <form action="#">
+        <input type="password" id="myPassword" >
+        <i class="far fa-eye" id="eye" onclick="showtoggle()"></i>
+      </form>
+    </div>
+    <div class="message" id="message" >
+      <i class="fas fa-times" id="numberIcon"></i>
+      <p class="password-contain" id="number">Must Have Numbers !</p>
+      <i class="fas fa-times" id="charIcon"></i>
+      <p class="password-contain" id="specialCHAR">
+        Must Have a special char !
+      </p>
+      <i class="fas fa-times" id="capitalIcon"></i>
+      <p class="password-contain" id="capital">A Uppercase letter</p>
+      <i class="fas fa-times" id="lengthIcon"></i>
+      <p class="password-contain" id="length">Should be 8 characters !</p>
+    </div>
+    
+  </body>
+  <script>
+      var state = true; 
+      
+      function showtoggle() {
+        if (state) {
+          document.getElementById("myPassword").setAttribute("type", "password");
+          document.getElementById("eye").setAttribute("class", "far fa-eye");
+          state = false;
+        } else {
+          document.getElementById("myPassword").setAttribute("type", "text");
+          document
+            .getElementById("eye")
+            .setAttribute("class", "far fa-eye-slash");
+          state = true;
+        }
+      }
+      myPassword.onfocus = function () {
+        document.getElementById("message").style.opacity = "1";
+      };
+      myPassword.onblur = function () {
+        document.getElementById("message").style.opacity = "0";
+      };
+      var Password = document.getElementById("myPassword");
+      var capital = document.getElementById("capital");
+      var number = document.getElementById("number");
+      var specialCHAR = document.getElementById("specialCHAR");
+      var length = document.getElementById("length");
+      Password.onkeyup = function () {
+        if (Password.value.match(/[0-9]/)) {
+          document
+            .getElementById("numberIcon")
+            .setAttribute("class", "fas fa-check");
+          number.classList.remove("invalid");
+          number.classList.add("valid");
+        } else {
+          document
+            .getElementById("numberIcon")
+            .setAttribute("class", "fas fa-times");
+          number.classList.add("invalid");
+          number.classList.remove("valid");
+        }
+        if (Password.value.match(/[a-z^A-Z]/)) {
+          document
+            .getElementById("charIcon")
+            .setAttribute("class", "fas fa-check");
+          specialCHAR.classList.remove("invalid");
+          specialCHAR.classList.add("valid");
+        } else {
+          document
+            .getElementById("charIcon")
+            .setAttribute("class", "fas fa-times");
+          specialCHAR.classList.add("invalid");
+          specialCHAR.classList.remove("valid");
+        }
+        if (Password.value.match(/[A-Z]/)) {
+          document
+            .getElementById("capitalIcon")
+            .setAttribute("class", "fas fa-check");
+          capital.classList.remove("invalid");
+          capital.classList.add("valid");
+        } else {
+          document
+            .getElementById("capitalIcon")
+            .setAttribute("class", "fas fa-times");
+          capital.classList.add("invalid");
+          capital.classList.remove("valid");
+        }
+        if (Password.value.length >= 8) {
+          document
+            .getElementById("lengthIcon")
+            .setAttribute("class", "fas fa-check");
+          length.classList.remove("invalid");
+          length.classList.add("valid");
+        } else {
+          document
+            .getElementById("lengthIcon")
+            .setAttribute("class", "fas fa-times");
+          length.classList.add("invalid");
+          length.classList.remove("valid");
+        }
+      };
+    </script>
+  
+</html>
