@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#A70</title>
+    <input type="text" placeholder="Search..." id="filter_users"/>
+
+    <ul id="users-list">
+    
+    </ul>
+    <style>
+#filter_users{
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  width:100%;
+  padding:10px;
+}
+
+#users-list{
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+#users-list li {
+  padding:10px 5px;
+  border: 1px solid #eee;
+}
+#users-list li:nth-child(odd) {
+    background: #f2f2f2;
+}
+#users-list li:hover {
+    background: #fffed6;
+}
+#users-list li.hide {
+    display: none;
+}
+    </style>
+   
+</head>
+<body>
+</body>
+<script>
+  let users = [
+  'Apple',
+  'Banana',
+  'Cherries',
+  'Dates',
+  'Elderberry',
+  'Figs',
+  'Grapefruit',
+  'Huckleberry',
+  'Ita palm',
+  'Jackfruit',
+  'Kiwi',
+  'Lemon',
+  'Melon',
+  'Nectarine',
+  'Orange',
+  'Peach',
+  'Quine',
+  'Raspberry',
+  'Strawberry',
+  'Tangerine',
+  'Ugli fruit',
+  'Voavanga',
+  'Watermelon',
+  'Ximenia',
+  'Yumberry',
+  'Ziziphus'
+];
+
+ul = document.getElementById("users-list");
+
+let render_lists = function(lists){
+  let li = "";
+  for(index in lists){
+    li += "<li>" + lists[index] + "</li>";
+  }
+  ul.innerHTML = li;
+}
+render_lists(users);
+input = document.getElementById('filter_users');
+
+let filterUsers = function(event){
+  keyword = input.value.toLowerCase();
+  filtered_users = users.filter(function(user){
+        user = user.toLowerCase();
+       return user.indexOf(keyword) > -1; 
+  });
+  
+  render_lists(filtered_users);
+}
+
+input.addEventListener('keyup', filterUsers);
+    </script>
+</html>
