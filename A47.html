@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font: "Raleway", sans-serif;
+        color: rgba(0, 0, 0, 0.5);
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        height: 100vh;
+        background-color: #f6f7fc;
+      }
+
+      #gradient {
+        position: relative;
+        background: linear-gradient (45deg, aeoffee, #ff0000);
+        width: 250px;
+        height: 320px;
+        border-radius: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 50px;
+        box-shadow: 2px 31px 35px -15px rgba(0, 0, 0, 0.64);
+      }
+      input {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+      }
+      input::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+      input::-webkit-color-swatch {
+        border: none;
+        border-radius: 50%;
+      }
+      h3 {
+        font: 600 1.5em "Raleway", sans-serif;
+        color: rgba (0, 0, 0, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Create gradient using javascript</h3>
+    <div id="gradient"></div>
+    <input type="color" class="color1" name="color1" value="#00ff00" />
+    <input type="color" class="color2" name="color2" value="#00ff00" />
+    <h2>Code for generated gradient is -</h2>
+    <h4></h4>
+    <script>
+      var css = document.querySelector("h4");
+      var color1 = document.querySelector(".color1");
+      var color2 = document.querySelector(".color2");
+      var gradient = document.getElementById("gradient");
+      function setGradient() {
+        gradient.style.background =
+          "Linear-gradient(45deg, " 
+          + color1.value + "," + color2.value + ")";
+        css.textContent = gradient.style.background + ";";
+      }
+
+      color1.addEventListener("input", setGradient);
+      color2.addEventListener("input", setGradient);
+    </script>
+  </body>
+</html>
